@@ -14,23 +14,43 @@
 
 		
 		<div id="anchor"></div>
-		<div id="wrapper">
+		<div id="wrapper" class="navigation">
 			<div class="inner">
 				
-				<div id="navigation" class="navbar">
+				<div class="navbar">
 
 					<a class="navbar-brand" title="ElectroReel Components LLC">[site title]</a>
 
 					<nav id="site-navigation">
 						[navigation]
 					</nav>
+					
 					<button class="btn search-button" type="button" aria-label="Toggle search bar">
 						<i class="fas fa-search"></i>
 					</button>
+					
 					<button class="btn hamburger-button" type="button" aria-label="Toggle sidebar navigation">
 						<i class="fas fa-bars"></i>
 					</button>
-				</div>
+					
+					<div class="search-container">
+						<div class="search-input-wrapper">
+							<form role="search" method="get" id="searchform" action="">
+								<button class="btn form-search-button" type="button">
+									<i class="fas fa-search"></i>
+								</button>
+								<input name="s" id="s" class="search-input" type="search" aria-label="Search" placeholder="Search">
+							</form>
+						</div>
+					</div>
+					
+					<button class="btn search-close" type="button">
+						<i class="fas fa-times"></i>
+					</button>
+					
+					
+			  </div>
+				
 				
 
 			</div>
@@ -64,7 +84,7 @@
 			display: flex; /* flexbox layout */
 			font-family: 'Muli', sans-serif;
 			flex-direction: column;
-			height: 100%;
+			height: 2000px;
 			margin: 0;
 			padding: 0;
 		}
@@ -83,11 +103,202 @@
 			flex-grow: 1;
 		}
 		
+		#wrapper.navigation {
+			/*background: #fff;*/
+			-webkit-box-shadow: 0 0 15px 1px rgba(0,0,0,.07);
+			box-shadow: 0 0 15px 1px rgba(0,0,0,.07)l
+		}
+		
 		.navbar-brand { /* merge rest of navigation bar content to right */
 			flex-grow: 1;
 		}
+		
+		@-webkit-keyframes specialFadeIn {
+			from {
+				opacity: 0;
+				-webkit-transform: scale(0.8);
+				transform: scale(0.8);
+			} to {
+				opacity: 1;
+			}
+		}
+		
+		@keyframes specialFadein {
+			from {
+				opacity: 0;
+				-webkit-transform: scale(0.8);
+				transform: scale(0.8);
+			} to {
+				opacity: 1;
+			}	
+		}
+		
+		.specialFadeIn {
+			-webkit-animation-name: specialFadeIn;
+			animation-name: specialFadeIn;
+		}
+		
+		@-webkit-keyframes specialFadeOut {
+			from {
+				opacity: 1;
+			} to {
+				opacity: 0;
+				-webkit-transform: scale(0.8);
+				transform: scale(0.8);
+			}
+		}
+		
+		@keyframes specialFadeOut {
+			from {
+				opacity: 1;
+			} to {
+				opacity: 0;
+				-webkit-transform: scale(0.8);
+				transform: scale(0.8);
+			}
+		}
+		
+		.specialFadeOut {
+			-webkit-animation-name: specialFadeIn;
+			animation-name: specialFadeIn;
+		}
+		
+		.visible {
+			visibility: visible;
+		}
+		
+		.search-container.active {
+			display: block;
+			-webkit-animation-name: specialFadeOut;
+			animation-name: specialFadeOut;
+			transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+		}
+		
+		.searchform {
+			display: flex;
+			height: 40px;
+			align-items: center;
+			justify-content: center;
+			margin-left: 0px;
+			width: 100%;
+			border: none;
+			padding-left: 10px;
+		}
+
+  		.search-container {
+   			display: none;
+			-ms-flex: 1 0 auto;
+   			flex: 1 0 auto;
+	      	z-index: 2;
+  		}
+  		.menu-search-container input {
+			width: 100%;
+			margin-left: 10px;
+			flex: 1 0;
+		}	
+.navbar-brand {
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+}
+  .menu-search-container input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #333;
+    font-weight: normal;
+  }
+  .menu-search-container a {
+    color: #333;
+  }
+  .menu-search-container a:first-child {
+    display: block;
+    float: left;
+    padding-right: 10px;
+  }
+  .menu-search-container.active {
+    display: block;
+  }
+
+  
+  .search-sub-menu {
+    background: #fff;
+    width: 100%;
+    margin-top: 14px;
+    color: #999;
+    padding: 24px 0 15px;
+    z-index: 1;
+  }
+  .search-sub-menu h3 {
+    font-size: 12px;
+    font-weight: 100;
+    margin-top: 0;
+    padding-left: 28px;
+  }
+  .search-sub-menu ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .search-sub-menu ul li {
+    display: block;
+    text-align: left;
+    padding-bottom: 10px;
+    margin: 0;
+    text-indent: 50px;
+  }
+  .search-sub-menu ul li a {
+    font-size: 14px;
+    color: #999;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .search-sub-menu ul li a:hover {
+    background-color: #f2f2f2;
+    color: #3392de;
+  }
+  .search-sub-menu ul li a:first-child {
+    float: none;
+    padding-right: 0;
+  }
+		
 	
 	</style>
+	
+	<script>
+		(function() {
+			
+			'use strict';
+			
+			var $view = $(".search-container");
+			var $menu = $(".site-navigation, .search-button, .hamburger-button");
+			var $close = $(".search-container");
+			var $brand = $(".navbar-brand");
+			var $form = $(".search-search-input-wrapper");
+			var $curtain = $(".curtain");
+			
+			$('.search-button, .search-close, .fade-screen').on('click', function(e) {
+				$view.toggleClass('active');
+				$brand.toggleClass('active');
+				$form.toggleClass('active');
+				$close.toggleClass('active');
+			
+				$curtain.toggleClass('visible');
+				$menu.removeClass('is-closed');
+				$menu.toggleClass('hidden');
+			
+				e.preventDefault();
+			
+			});
+		 
+		$('.curtain, .search-close').on('click', function(e) {
+			$menu.toggleClass('is-closed');
+			e.preventDefault();
+		});
+
+		}())
+	</script>
 	
 	
 </body>
