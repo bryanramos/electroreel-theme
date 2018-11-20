@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+	
+	
+
+<body>
+	
+	<section class="mainsite-header" style="background: #ddd;">
+		<!--<h1>Sample Title</h1>-->
+
+		
+		<div id="anchor"></div>
+		<div id="wrapper">
+			<div class="inner">
+				
+				<div id="navigation" class="navbar">
+
+					<a class="navbar-brand" title="ElectroReel Components LLC">[site title]</a>
+
+					<nav id="site-navigation">
+						[navigation]
+					</nav>
+					<button class="btn search-button" type="button" aria-label="Toggle search bar">
+						<i class="fas fa-search"></i>
+					</button>
+					<button class="btn hamburger-button" type="button" aria-label="Toggle sidebar navigation">
+						<i class="fas fa-bars"></i>
+					</button>
+				</div>
+				
+
+			</div>
+		</div>
+		
+		
+	</section>
+	
+	<section class="mainsite-content" style="background: #eee;">
+		[site content]
+	</section>
+	
+	<section class="mainsite-footer" style="background: #ccc;">
+		[site footer]
+	</section>
+	
+	<style type="text/css">
+		
+		@Import url('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
+		@Import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+		@Import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+		@Import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+
+	
+		html, body {
+			height: 100%;
+			min-height: 100%;
+		}
+		
+		body {
+			display: flex; /* flexbox layout */
+			font-family: 'Muli', sans-serif;
+			flex-direction: column;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		
+		h1, h2, h3, h4, h5, h6 {
+			font-family: Poppins, sans-serif;
+		}
+		
+		.inner { /* container for content */
+			max-width: calc(1600px + 10%);
+			margin: 0 auto;
+			padding: 0 5%;
+		}
+		
+		.mainsite-content {
+			flex-grow: 1;
+		}
+		
+		.navbar-brand { /* merge rest of navigation bar content to right */
+			flex-grow: 1;
+		}
+	
+	</style>
+	
+	
+</body>
+</html>
